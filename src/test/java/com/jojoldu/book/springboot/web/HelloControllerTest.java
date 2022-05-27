@@ -1,7 +1,6 @@
-package com.jojoldu.book.springboot;
+package com.jojoldu.book.springboot.web;
 
 import com.jojoldu.book.springboot.config.auth.SecurityConfig;
-import com.jojoldu.book.springboot.web.HelloController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +13,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
 @RunWith(SpringRunner.class) //테스트를 진행할때 JUit에 내장된 실행자외에 다른 실행자를 실행시킴.
@@ -34,12 +31,12 @@ public class HelloControllerTest {
     @Autowired // 스프링이 관리하는 Bean을 주입받음
     private MockMvc mvc; //웹 API를 테스트할때 사용, 스프링MVC테스트의 시작점, 이 클래스를 통해 HTTP GET,POST등에 대한 API테스트 를 할수있음
 
-    @WithMockUser
+    @WithMockUser(roles="USER")
     @Test
     public void hello가_리턴된다() throws Exception {
         String hello = "hello";
 
-        mvc.perform(get("/hello")) //MockMvc를 통해 /hello 주소로 HTTP GET을 요청
+        mvc.perform(get("hello")) //MockMvc를 통해 /hello 주소로 HTTP GET을 요청
                                               //체인닝이 지원ㄴ되어 아래와 같이 여러 검증 기능을 이어서 선언할수있음
                 .andExpect(status().isOk())//mvc.perform 의 결과 , HTTP Header의 Status를 검증
                                             // 200,404,500 오류의 상태를 검증.
@@ -49,7 +46,7 @@ public class HelloControllerTest {
                                     //응답본문의 내용을 검증
                                     //Controller에서 "hello"를 리턴하기 때문에 이 값이 맞는지 검증함
     }
-    @WithMockUser
+    @WithMockUser(roles="USER")
     @Test
     public void helloDto가_리턴된다() throws Exception {
         String name = "hello";
