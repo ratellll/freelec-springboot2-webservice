@@ -36,7 +36,7 @@ public class HelloControllerTest {
     public void hello가_리턴된다() throws Exception {
         String hello = "hello";
 
-        mvc.perform(get("hello")) //MockMvc를 통해 /hello 주소로 HTTP GET을 요청
+        mvc.perform(get("/hello")) //MockMvc를 통해 /hello 주소로 HTTP GET을 요청
                                               //체인닝이 지원ㄴ되어 아래와 같이 여러 검증 기능을 이어서 선언할수있음
                 .andExpect(status().isOk())//mvc.perform 의 결과 , HTTP Header의 Status를 검증
                                             // 200,404,500 오류의 상태를 검증.
