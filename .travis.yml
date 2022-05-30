@@ -18,3 +18,5 @@ notifications:
   email:
     recipients:
       -latellbin@naver.com
+
+#travis 체크한번해보자
