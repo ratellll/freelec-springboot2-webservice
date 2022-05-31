@@ -15,7 +15,6 @@ cache:
 script: "./gradlew clean build"
 
 before_deploy:
-  - zip -r try_OM.zip
   - mkdir -p deploy
   - mv try_OM.zip deploy/try_OM.zip
 
@@ -29,6 +28,17 @@ deploy:
     acl: private #zip 파일 접근을 private으로
     local_dir: deploy #before_deploy에서 생성한 디렉토리
     wait-until-deploy: true
+
+  - provider: codedeploy
+      access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
+      secret_access_key: $AWS_SECRET_KEY #Travis repo settings에 설정된 값
+      bucket: try-om-springboot-build #S3 버킷
+      key: try_OM.zip
+      bundle_type: zip #압축확장자
+      application: try_OM #웹콘솔에서 등록한 codedeploy 애플리케이션
+      deployment_group: try_OM-group #웹콘솔에 등록한 배포그룹
+      region: ap-northeast-2
+      wait-until-deployed: true
 
 
 
