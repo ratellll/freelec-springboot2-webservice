@@ -15,7 +15,7 @@ cache:
 script: "./gradlew clean build"
 
 before_deploy:
-  - zip -r try_OM
+  - zip -r try_OM.zip
   - mkdir -p deploy
   - mv try_OM.zip deploy/try_OM.zip
 
