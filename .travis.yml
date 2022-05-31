@@ -16,7 +16,7 @@ script: "./gradlew clean build"
 
 before_deploy:
   - zip -r try_OM
-  -mkdir -p deploy
+  - mkdir -p deploy
   - mv try_OM.zip deploy/try_OM.zip
 
 deploy:
