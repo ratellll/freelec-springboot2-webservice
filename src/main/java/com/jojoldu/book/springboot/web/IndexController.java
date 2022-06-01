@@ -38,7 +38,7 @@ public class IndexController {
     public String postsView(@PathVariable Long id, Model model) {
         PostsResponseDto dto = postsService.findById(id);
         model.addAttribute("post", dto);
-        return "posts-show";
+        return "posts-view";
     }
 
 
