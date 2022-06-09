@@ -29,21 +29,27 @@ public class Posts extends BaseTimeEntity {
     //사용해야하는 이유는 기본값 외에 추가로 변경이 필요한 옵션이 있으면 사용함
     //문자열의 경우 VARCHAR(255)가 기본값인데 , 사이즈를 500으로 늘리고 싶거나 타입을 바꾸고싶을때사용
     @Column(length = 500, nullable = false)
-    private String title;
+    private String title;//제목
 
     @Column(columnDefinition = "TEXT", nullable = false)
-    private String content;
+    private String content; //내용
 
-    private String author;
+    private String author;//작성자
 
+    private int hits;  //조회수
     @Builder //해당 클래스의 빌더 패턴 클래스를 생성
             //생성자 상단에 선언 시 생성자에 포함된 필드만 빌더에 포함
-    public Posts(String title, String content, String author) {
+    public Posts(String title, String content, String author, int hits) {
         this.title = title;
         this.content = content;
         this.author = author;
+        this.hits = hits;
     }
 
+    // 조회수 증가
+    public void increaseHits() {
+        this.hits++;
+    }
     public void update(String title, String content) {
         this.title = title;
         this.content = content;

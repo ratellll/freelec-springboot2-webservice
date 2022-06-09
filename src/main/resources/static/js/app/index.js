@@ -33,6 +33,8 @@ var main = {
         });
       },
 
+
+
      update : function () {
             var data = {
                 title: $('#title').val(),
