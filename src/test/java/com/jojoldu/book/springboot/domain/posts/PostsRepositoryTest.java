@@ -32,14 +32,14 @@ public class PostsRepositoryTest {
     @Test
     public void 게시물저장_불러오기(){
         //given
-        String title ="테스트게시글";
-        String content ="테스트본문";
+        String title ="테스트 게시글";
+        String content ="테스트 본문";
 
         postsRepository.save(Posts.builder() //테이블 posts에 insert/update 쿼리를실행 ,
                                             // id값이 있다면 update 없다면 insert쿼리 실행
                 .title(title)
                 .content(content)
-                .author("jojoldu@gmail.com")
+                .author("barttla1@gmail.com")
                 .build());
 
         //when
