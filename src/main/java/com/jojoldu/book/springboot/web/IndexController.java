@@ -34,13 +34,6 @@ public class IndexController {
     }
 
 
-    @GetMapping("/posts/view")
-    public String postsView(@PathVariable Long id, Model model) {
-        PostsResponseDto dto = postsService.findById(id);
-        model.addAttribute("post", dto);
-        return "posts-view";
-    }
-
 
     @GetMapping("/posts/update/{id}")
     public String postsUpdate(@PathVariable Long id, Model model) {

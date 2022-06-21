@@ -36,20 +36,14 @@ public class Posts extends BaseTimeEntity {
 
     private String author;//작성자
 
-    private int hits;  //조회수
     @Builder //해당 클래스의 빌더 패턴 클래스를 생성
             //생성자 상단에 선언 시 생성자에 포함된 필드만 빌더에 포함
-    public Posts(String title, String content, String author, int hits) {
+    public Posts(String title, String content, String author) {
         this.title = title;
         this.content = content;
         this.author = author;
-        this.hits = hits;
     }
 
-    // 조회수 증가
-    public void increaseHits() {
-        this.hits++;
-    }
     public void update(String title, String content) {
         this.title = title;
         this.content = content;

@@ -11,7 +11,6 @@ public class PostsResponseDto {
     private String content;
     private String author;
 
-    private int increaseHits;
 
 
     public PostsResponseDto(Posts entity) {
@@ -19,6 +18,5 @@ public class PostsResponseDto {
         this.title = entity.getTitle();
         this.content = entity.getContent();
         this.author = entity.getAuthor();
-        this.increaseHits = entity.getHits();
     }
 }
