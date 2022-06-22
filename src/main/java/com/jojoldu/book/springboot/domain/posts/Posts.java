@@ -21,8 +21,6 @@ public class Posts extends BaseTimeEntity {
 
     @Id //해당 테이블의 PK 필드를 나타냄
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     //PK 생성 규칙을 나타냄.
-     // 스프링부트 2.0에서는 GenerationType.IDENTITY 옵션을 추가해야만 auto_increment가 가능
     private Long id;
 
     //@Coulmn 테이블의 칼럼을 나타내며 굳이 선언하지 않더라도 해당 클라스의 필드는 모두 칼럼이 됨
